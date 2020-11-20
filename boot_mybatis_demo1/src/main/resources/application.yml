@@ -1,0 +1,7 @@
+# 应用名称
+spring:
+  application:
+    name: boot_mybatis_demo1
+server:
+  port: 8017
+
