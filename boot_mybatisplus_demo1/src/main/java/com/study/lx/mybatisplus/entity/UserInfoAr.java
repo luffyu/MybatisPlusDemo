@@ -1,12 +1,11 @@
 package com.study.lx.mybatisplus.entity;
 
 import com.baomidou.mybatisplus.annotation.*;
-
-import java.time.LocalDateTime;
-import java.io.Serializable;
-
+import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+
+import java.time.LocalDateTime;
 
 /**
  * <p>
@@ -18,8 +17,8 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-//@TableName(value = "user_info",keepGlobalPrefix = true)
-public class UserInfo implements Serializable {
+@TableName("user_info")
+public class UserInfoAr extends Model<UserInfoAr> {
 
     private static final long serialVersionUID = 1L;
 

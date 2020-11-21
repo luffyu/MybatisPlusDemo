@@ -16,7 +16,7 @@ import java.util.Random;
  */
 @Slf4j
 @SpringBootTest
-public class UpdateMapperService {
+public class UpdateMapperTest {
 
     @Autowired
     private UserInfoMapper userInfoMapper;
@@ -24,18 +24,16 @@ public class UpdateMapperService {
 
     /**
      * table的结构
-     *
-         id          int(11) unsigned auto_increment comment '自增id'
-         primary key,
-         user_name   varchar(50)             not null comment '用户名称',
-         user_age    smallint(3)             not null comment '年龄',
-         email    varchar(50)             not null comment '邮箱',
-         version     int          default 0  not null comment '版本号',
-         role_id  varchar(255) default '' null comment '管理id',
-         create_time datetime                null comment '创建时间',
-         del_flag    int          default 0  null comment '逻辑删除状态 0表示没有删除 1表示已经删除'
+     `user_id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增id',
+     `user_name` varchar(50) NOT NULL COMMENT '用户名称',
+     `age` smallint(3) NOT NULL COMMENT '年龄',
+     `email` varchar(50) NOT NULL COMMENT '邮箱',
+     `manager_id` int(11) NOT NULL COMMENT '上级id',
+     `create_time` datetime DEFAULT NULL COMMENT '创建时间',
+     `update_time` datetime DEFAULT NULL COMMENT '修改时间',
+     `del_flag` int(11) DEFAULT '0' COMMENT '逻辑删除状态 0表示没有删除 1表示已经删除',
+     `version` int(11) NOT NULL DEFAULT '0' COMMENT '版本号',
      */
-
 
 
     @Test
@@ -43,24 +41,25 @@ public class UpdateMapperService {
         UserInfo userInfo = userInfoMapper.selectById(1);
         userInfoMapper.updateById(userInfo);
     }
-
-
-    @Test
-    public void updateDemo2(){
-        UserInfo userInfo = userInfoMapper.selectById(1);
-        userInfo.setCreateTime(LocalDateTime.now());
-        userInfoMapper.updateById(userInfo);
-    }
-
-
+//
+//
+//    @Test
+//    public void updateDemo2(){
+//        UserInfo userInfo = userInfoMapper.selectById(1);
+//        userInfo.setCreateTime(LocalDateTime.now());
+//        userInfoMapper.updateById(userInfo);
+//    }
+//
+//
     @Test
     public void init(){
         for (int i=0;i<10;i++){
             UserInfo userInfo = new UserInfo();
             userInfo.setUserName("name"+i);
-            userInfo.setUserAge(new Random().nextInt(100));
+            userInfo.setAge(18 + new Random().nextInt(10));
             userInfo.setCreateTime(LocalDateTime.now());
-            userInfo.setRoleId(1);
+            userInfo.setUpdateTime(LocalDateTime.now());
+            userInfo.setManagerId(1);
             userInfo.setEmail(userInfo.getUserName() + "@lx.com");
             userInfoMapper.insert(userInfo);
         }

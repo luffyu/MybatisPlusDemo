@@ -1,7 +1,8 @@
 package com.study.lx.mybatisplus.mapper;
 
-import com.study.lx.mybatisplus.entity.UserInfo;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.study.lx.mybatisplus.entity.UserInfo;
+import com.study.lx.mybatisplus.entity.UserInfoAr;
 
 /**
  * <p>
@@ -11,6 +12,6 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @author rockyu
  * @since 2020-11-21
  */
-public interface UserInfoMapper extends BaseMapper<UserInfo> {
+public interface UserInfoArMapper extends BaseMapper<UserInfoAr> {
 
 }

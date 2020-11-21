@@ -3,10 +3,15 @@ spring:
   application:
     name: boot_mybatisplus_demo1
   datasource:
-    url: jdbc:mysql://localhost:3308/study_demo1?useUnicode=true;characterEncoding=utf-8
+    url: jdbc:mysql://localhost:3306/data_config?useUnicode=true;characterEncoding=utf-8
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: root
+#  datasource:
+#    url: jdbc:p6spy:mysql://localhost:3306/data_config?useUnicode=true;characterEncoding=utf-8
+#    driver-class-name: com.p6spy.engine.spy.P6SpyDriver
+#    username: root
+#    password: root
 
 server:
   port: 8018
@@ -16,7 +21,16 @@ logging:
     com.study.lx.mybatisplus.mapper: debug
 
 
-mybatis-plus:
-  global-config:
-    db-config:
-      table-prefix: F_
+#mybatis-plus:
+#  global-config:
+#    db-config:
+#      # 全局表名称的前缀
+#      table-prefix: F_
+#      # 全局字段进行format 对主键是无效的
+#      column-format: f_%s
+#      # 全局逻辑删除字段
+#      logic-delete-field: delFlag
+#      # 全局逻辑已删除value值
+#      logic-delete-value: 1
+#      # 全局逻辑未删除值
+#      logic-not-delete-value: 0

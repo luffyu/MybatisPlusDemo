@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
  * </p>
  *
  * @author rockyu
- * @since 2020-11-18
+ * @since 2020-11-21
  */
 @RestController
 @RequestMapping("/user-info")
