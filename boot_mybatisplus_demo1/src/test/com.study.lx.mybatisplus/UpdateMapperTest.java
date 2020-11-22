@@ -59,7 +59,7 @@ public class UpdateMapperTest {
             userInfo.setAge(18 + new Random().nextInt(10));
             userInfo.setCreateTime(LocalDateTime.now());
             userInfo.setUpdateTime(LocalDateTime.now());
-            userInfo.setManagerId(1);
+            userInfo.setRoleId(1);
             userInfo.setEmail(userInfo.getUserName() + "@lx.com");
             userInfoMapper.insert(userInfo);
         }

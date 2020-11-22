@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author rockyu
@@ -80,31 +81,50 @@ public class SelectMapperTest {
         log.info("结果 >>>" + userInfos);
     }
 
-//
-//    /**
-//     * 例子: 查询 邮箱包含"lx" 或者 年龄大于20岁  并且 角色名称为 后端 的 各年龄人数，并按照人数倒序排序
-//         select user_age,count(1) as num
-//         from user_info
-//         where (email like "%lx%" or user_age > 20) and role_id in (
-//             select id
-//             from role_info
-//             where role_name = '后端'
-//            )
-//         group by user_age
-//         order by num desc
-//     */
-//    @Test
-//    public void selectDemo4(){
-//        QueryWrapper<UserInfo> queryWrapper = new QueryWrapper<>();
-//        queryWrapper.select("user_age","count(1) as num")
-//                .and(i -> i.like("email","lx").or().ge("user_age",20))
-//                .inSql("role_id","select id from role_info where role_name = '后端' ")
-//                .groupBy("user_age")
-//                .orderByDesc("num");
-//        List<Map<String, Object>> userInfos = userInfoMapper.selectMaps(queryWrapper);
-//        log.info("结果 >>>" + userInfos);
-//    }
-//
+
+    /**
+     * 例子: 查询一条 今天创建 并且 年龄大于25 or 小于20的用户信息
+     select *
+     from user_info
+     where data_format(creat_time,'%Y-%m-%d') = '2020-11-21' and (age >= 25 or age <= 20)
+     limit 1;
+     */
+    @Test
+    public void selectDemo4(){
+        QueryWrapper<UserInfo> queryWrapper = new QueryWrapper<>();
+        queryWrapper.apply("date_format(create_time,'%Y-%m-%d') = {0}","2020-11-21")
+                .and(m -> m.ge("age",25).or().le("age",20))
+                .last(" limit 1");
+        List<UserInfo> userInfos = userInfoMapper.selectList(queryWrapper);
+        log.info("结果 >>>" + userInfos);
+    }
+
+
+
+    /**
+     * 例子: 查询 邮箱包含"lx" 或者 年龄大于20岁  并且 角色名称为 后端 的 各年龄人数，并按照人数倒序排序
+         select distinct age,count(1) as num
+         from user_info
+         where (email like "%lx%" or user_age > 20) and role_id in (
+             select id
+             from role_info
+             where role_name like '%java%'
+            )
+         group by user_age
+         order by num desc
+     */
+    @Test
+    public void selectDemo5(){
+        QueryWrapper<UserInfo> queryWrapper = new QueryWrapper<>();
+        queryWrapper.select("distinct age","count(1) as num")
+                .and(i -> i.like("email","lx").or().ge("age",20))
+                .inSql("role_id","select role_id from role_info where role_name like '%java%' ")
+                .groupBy("age")
+                .orderByDesc("num");
+        List<Map<String, Object>> userInfos = userInfoMapper.selectMaps(queryWrapper);
+        log.info("结果 >>>" + userInfos);
+    }
+
 //
 //    /**
 //     * 例子: 一个having的例子

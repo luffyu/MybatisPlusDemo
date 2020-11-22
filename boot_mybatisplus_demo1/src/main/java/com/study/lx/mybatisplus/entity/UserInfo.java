@@ -1,12 +1,11 @@
 package com.study.lx.mybatisplus.entity;
 
 import com.baomidou.mybatisplus.annotation.*;
-
-import java.time.LocalDateTime;
-import java.io.Serializable;
-
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+
+import java.io.Serializable;
+import java.time.LocalDateTime;
 
 /**
  * <p>
@@ -50,8 +49,8 @@ public class UserInfo implements Serializable {
     /**
      * 邮箱
      */
-    //@TableField(value = "manager_id",condition = SqlCondition.LIKE)
-    private Integer managerId;
+    //@TableField(value = "role_id",condition = SqlCondition.LIKE)
+    private Integer roleId;
 
     /**
      * 创建时间
