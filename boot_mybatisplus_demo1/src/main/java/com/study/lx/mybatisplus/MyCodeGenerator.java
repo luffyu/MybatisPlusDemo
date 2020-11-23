@@ -14,7 +14,7 @@ import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
 public class MyCodeGenerator {
 
     public static void main(String[] args) {
-        create("user_info");
+        create("role_info");
     }
 
     public static void create(String... tables) {

@@ -15,11 +15,12 @@ CREATE TABLE `user_info` (
 
 
 CREATE TABLE `role_info` (
-  `role_id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '角色id',
+  `id` bigint(11)  NOT NULL  COMMENT 'id',
+  `role_id` int(11) unsigned NOT NULL COMMENT '角色id',
   `role_name` varchar(50) NOT NULL COMMENT '角色名称',
   `create_time` datetime DEFAULT NULL COMMENT '创建时间',
   `update_time` datetime DEFAULT NULL COMMENT '修改时间',
   `del_flag` int(11) DEFAULT '0' COMMENT '逻辑删除状态 0表示没有删除 1表示已经删除',
   `version` int(11) NOT NULL DEFAULT '0' COMMENT '版本号',
-  PRIMARY KEY (`role_id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

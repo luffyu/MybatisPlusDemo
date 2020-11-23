@@ -41,18 +41,25 @@ public class UpdateMapperTest {
         UserInfo userInfo = userInfoMapper.selectById(1);
         userInfoMapper.updateById(userInfo);
     }
-//
-//
-//    @Test
-//    public void updateDemo2(){
-//        UserInfo userInfo = userInfoMapper.selectById(1);
-//        userInfo.setCreateTime(LocalDateTime.now());
-//        userInfoMapper.updateById(userInfo);
-//    }
-//
-//
+
+
     @Test
-    public void init(){
+    public void initOne(){
+        for (int i=0;i<10;i++){
+            UserInfo userInfo = new UserInfo();
+            userInfo.setUserName("rock");
+            userInfo.setAge(18);
+            userInfo.setCreateTime(LocalDateTime.now());
+            userInfo.setUpdateTime(LocalDateTime.now());
+            userInfo.setRoleId(1);
+            userInfo.setEmail("rockyu@lx.com");
+            userInfoMapper.insert(userInfo);
+        }
+    }
+
+
+    @Test
+    public void initBatch(){
         for (int i=0;i<10;i++){
             UserInfo userInfo = new UserInfo();
             userInfo.setUserName("name"+i);
@@ -64,6 +71,8 @@ public class UpdateMapperTest {
             userInfoMapper.insert(userInfo);
         }
     }
+
+
 
 
 }
