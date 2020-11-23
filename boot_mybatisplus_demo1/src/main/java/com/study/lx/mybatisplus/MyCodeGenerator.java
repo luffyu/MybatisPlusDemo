@@ -34,7 +34,7 @@ public class MyCodeGenerator {
 
         // 数据源配置
         DataSourceConfig dsc = new DataSourceConfig();
-        dsc.setUrl("jdbc:mysql://localhost:3306/data_config?useUnicode=true;characterEncoding=utf-8");
+        dsc.setUrl("jdbc:mysql://localhost:3308/study_demo1?useUnicode=true;characterEncoding=utf-8");
         dsc.setDriverName("com.mysql.cj.jdbc.Driver");
         dsc.setUsername("root");
         dsc.setPassword("root");

@@ -86,13 +86,13 @@ public class SelectMapperTest {
      * 例子: 查询一条 今天创建 并且 年龄大于25 or 小于20的用户信息
      select *
      from user_info
-     where data_format(creat_time,'%Y-%m-%d') = '2020-11-21' and (age >= 25 or age <= 20)
+     where data_format(creat_time,'%Y-%m-%d') = '2020-11-23' and (age >= 25 or age <= 20)
      limit 1;
      */
     @Test
     public void selectDemo4(){
         QueryWrapper<UserInfo> queryWrapper = new QueryWrapper<>();
-        queryWrapper.apply("date_format(create_time,'%Y-%m-%d') = {0}","2020-11-21")
+        queryWrapper.apply("date_format(create_time,'%Y-%m-%d') = {0}","2020-11-23")
                 .and(m -> m.ge("age",25).or().le("age",20))
                 .last(" limit 1");
         List<UserInfo> userInfos = userInfoMapper.selectList(queryWrapper);
