@@ -92,7 +92,7 @@ public class SelectMapperTest {
     @Test
     public void selectDemo4(){
         QueryWrapper<UserInfo> queryWrapper = new QueryWrapper<>();
-        queryWrapper.apply("date_format(create_time,'%Y-%m-%d') = {0}","2020-11-23")
+        queryWrapper.apply("date_format(create_time,'%Y-%m-%d') = {0}","2020-11-23 ")
                 .and(m -> m.ge("age",25).or().le("age",20))
                 .last(" limit 1");
         List<UserInfo> userInfos = userInfoMapper.selectList(queryWrapper);
@@ -116,7 +116,7 @@ public class SelectMapperTest {
     @Test
     public void selectDemo5(){
         QueryWrapper<UserInfo> queryWrapper = new QueryWrapper<>();
-        queryWrapper.select("distinct age","count(1) as num")
+        queryWrapper.select("age","count(1) as num")
                 .and(i -> i.like("email","lx").or().ge("age",20))
                 .inSql("role_id","select role_id from role_info where role_name like '%java%' ")
                 .groupBy("age")

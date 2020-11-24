@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-//@TableName(value = "user_info",keepGlobalPrefix = true)
+@TableName(value = "user_info",keepGlobalPrefix = true)
 public class UserInfo implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -25,7 +25,7 @@ public class UserInfo implements Serializable {
     /**
      * 自增id
      */
-    @TableId(value = "user_id", type = IdType.AUTO)
+    @TableId(value = "user_id", type = IdType.INPUT)
     private Integer userId;
 
     /**
@@ -66,7 +66,7 @@ public class UserInfo implements Serializable {
     /**
      * 逻辑删除状态 0表示没有删除 1表示已经删除
      */
-    //@TableLogic
+    @TableLogic
     private Integer delFlag;
 
     /**

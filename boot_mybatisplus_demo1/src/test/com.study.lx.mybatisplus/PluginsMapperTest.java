@@ -1,7 +1,6 @@
 package com.study.lx.mybatisplus;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.study.lx.mybatisplus.entity.UserInfo;
 import com.study.lx.mybatisplus.mapper.UserInfoMapper;
@@ -42,7 +41,7 @@ public class PluginsMapperTest {
         //current 是当前页，size是一页的大小
         Page<UserInfo> page = new Page<>(1,2);
         //是否统计行数
-        page.setSearchCount(false);
+        //page.setSearchCount(false);
 
         LambdaQueryWrapper<UserInfo> lambdaQueryWrapper = new LambdaQueryWrapper<>();
         lambdaQueryWrapper.ge(UserInfo::getAge,10);
